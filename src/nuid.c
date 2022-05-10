@@ -22,7 +22,7 @@ static uint32_t Q[CMWC_CYCLE];
 static uint32_t carry = 362436;     // must be limited with CMWC_C_MAX (we will reinit it with seed)
 
 // Make 32 bit random number (some systems use 16 bit RAND_MAX)
-static uint32_t
+uint32_t
 _rand32(void)
 {
     union {
