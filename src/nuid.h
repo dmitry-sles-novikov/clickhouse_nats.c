@@ -18,6 +18,8 @@
 
 #define NUID_BUFFER_LEN (12 + 10)
 
+uint32_t _rand32(void);
+
 // Seed sequential random with math/random and current time and generate crypto prefix.
 natsStatus
 natsNUID_init(void);
