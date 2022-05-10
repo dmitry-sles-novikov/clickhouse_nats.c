@@ -1617,7 +1617,7 @@ _doReconnect(void *arg)
             {
                 sleepTime = nc->opts->reconnectWait;
                 if (jitter > 0)
-                    sleepTime += rand() % jitter;
+                    sleepTime += _rand32() % jitter;
             }
             if (natsConn_isClosed(nc))
                 break;

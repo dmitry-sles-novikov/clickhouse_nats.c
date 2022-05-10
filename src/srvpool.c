@@ -208,7 +208,7 @@ _shufflePool(natsSrvPool *pool, int offset)
 
     for (i = offset; i < pool->size; i++)
     {
-        j = offset + rand() % (i + 1 - offset);
+        j = offset + _rand32() % (i + 1 - offset);
         tmp = pool->srvrs[i];
         pool->srvrs[i] = pool->srvrs[j];
         pool->srvrs[j] = tmp;
