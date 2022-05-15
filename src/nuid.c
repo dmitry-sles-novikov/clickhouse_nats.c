@@ -22,14 +22,16 @@ static uint32_t Q[CMWC_CYCLE];
 static uint32_t carry = 362436;     // must be limited with CMWC_C_MAX (we will reinit it with seed)
 
 // Make 32 bit random number (some systems use 16 bit RAND_MAX)
-static uint32_t
+uint32_t
 _rand32(void)
 {
-    uint32_t result = 0;
-    result = rand();
-    result <<= 16;
-    result |= rand();
-    return result;
+    union {
+        unsigned int i;
+        unsigned char c[sizeof(unsigned int)];
+    } u;
+
+    RAND_bytes(u.c, sizeof(u.c));
+    return u.i;
 }
 
 // Init all engine parts with seed
